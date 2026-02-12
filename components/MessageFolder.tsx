@@ -141,7 +141,7 @@ export const MessageFolder: React.FC = () => {
                   <PixelFile size={32} className="text-gray-900 drop-shadow-lg sm:w-20 sm:h-20" />
                 )}
               </div>
-              <span className="font-sans text-[10px] sm:text-sm md:text-lg text-white font-bold break-words w-full px-1 leading-tight drop-shadow-md">
+              <span className="font-sans text-sm sm:text-xl md:text-3xl text-white font-bold break-words w-full px-1 leading-tight drop-shadow-md">
                 {item.name}
               </span>
             </motion.div>
