@@ -7,7 +7,6 @@ interface IconProps {
 
 export const PixelHeart: React.FC<IconProps> = ({ size = 24, className = "" }) => {
   // Use silhouette for buttons/locked state (white/gray text)
-  // Use colored sprite for branding (love text or no text color)
   const isSilhouette = className.includes('text-white') || className.includes('text-gray') || className.includes('text-slate');
 
   if (isSilhouette) {
@@ -18,53 +17,40 @@ export const PixelHeart: React.FC<IconProps> = ({ size = 24, className = "" }) =
     );
   }
 
-  // Colored Sprite matching the user's image
+  // Multi-colored "Sparkle Heart" matching the reference
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
-      {/* Background/Border (Black) */}
-      <path fill="#000000" d="M4 4h2v2H4z M6 2h4v2H6z M10 4h4v2h-4z M14 2h4v2h-4z M18 4h2v4h-2z M18 8h-2v2h2z M18 10h-2v4h-2v4h-2v2h-4v-2h-2v-4h-2v-4H4V6h2V4z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg" style={{ imageRendering: 'pixelated' }}>
+      {/* 1. Black Border */}
+      <path fill="#000" d="M4 4h4v2H4z M16 4h4v2h-4z M2 6h2v4H2z M8 6h2v2H8z M14 6h2v2h-4z M20 6h2v4h-2z M2 10h2v4H2z M20 10h2v4h-2z M4 14h2v2H4z M18 14h2v2h-2z M6 16h2v2H6z M16 16h2v2h-2z M8 18h2v2H8z M14 18h2v2h-2z M10 20h4v2h-4z" />
       
-      {/* Inner Pink Fill */}
-      <path fill="#f43f5e" d="M6 4h4v2h4v-2h4v4h-2v4h-2v4h-2v4h-2v2h-4v-2H6v-4H4V8h2V4z" />
+      {/* 2. Red Fill */}
+      <path fill="#ef4444" d="M4 6h4v2H4z M16 6h4v2h-4z M4 8h16v6H4z M6 14h12v2H6z M8 16h8v2H8z M10 18h4v2h-4z" />
       
-      {/* Shine (White) */}
-      <rect x="6" y="4" width="2" height="2" fill="white" />
-      <rect x="6" y="6" width="2" height="2" fill="white" />
-      <rect x="8" y="6" width="2" height="2" fill="white" />
+      {/* 3. Dark Red Shading (Lower edge) */}
+      <path fill="#be123c" d="M10 18h4v2h-4z M8 16h8v2H8z M18 10h2v4h-2z" />
+      
+      {/* 4. White Highlight (Top edge) */}
+      <path fill="#fff" opacity="0.4" d="M5 6h2v2H5z M17 6h2v2h-2z" />
 
-      {/* Lighter Pink Highlight */}
-      <rect x="14" y="4" width="2" height="2" fill="#fda4af" />
+      {/* 5. Yellow Sparkles (matching the emoji reference) */}
+      <g fill="#facc15">
+        {/* Top Right Sparkle */}
+        <path d="M18 6h1v1h-1z M17 7h3v1h-3z M18 8h1v1h-1z" />
+        {/* Bottom Left Sparkle */}
+        <path d="M6 16h1v1H6z M5 17h3v1H5z M6 18h1v1H6z" />
+      </g>
       
-      {/* Darker Pink Shading (Bottom tip) */}
-      <rect x="10" y="16" width="4" height="2" fill="#be123c" />
-      <rect x="8" y="14" width="2" height="2" fill="#be123c" />
-      <rect x="14" y="14" width="2" height="2" fill="#be123c" />
-      
+      {/* Sparkle Glow (White core) */}
+      <rect x="18" y="7" width="1" height="1" fill="#fff" />
+      <rect x="6" y="17" width="1" height="1" fill="#fff" />
     </svg>
   );
 };
 
 export const PixelFolder: React.FC<IconProps> = ({ size = 24, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" className={className} xmlns="http://www.w3.org/2000/svg">
-    {/* Back Layer (Tab & Body) */}
-    {/* Darker Yellow/Orange fill */}
-    <path 
-      d="M3 5h6l2 2h10v12H3V5z" 
-      fill="#eab308" 
-      stroke="#1f2937" 
-      strokeWidth="2" 
-      strokeLinejoin="round"
-    />
-    
-    {/* Front Layer (Flap) */}
-    {/* Lighter Yellow fill, slight trapezoid for perspective */}
-    <path 
-      d="M2 10h20l-1 11H3L2 10z" 
-      fill="#facc15" 
-      stroke="#1f2937" 
-      strokeWidth="2" 
-      strokeLinejoin="round"
-    />
+    <path d="M3 5h6l2 2h10v12H3V5z" fill="#eab308" stroke="#1f2937" strokeWidth="2" strokeLinejoin="round" />
+    <path d="M2 10h20l-1 11H3L2 10z" fill="#facc15" stroke="#1f2937" strokeWidth="2" strokeLinejoin="round" />
   </svg>
 );
 
